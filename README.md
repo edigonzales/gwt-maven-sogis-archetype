@@ -17,7 +17,8 @@ cd gwt-maven-sogis-archetype && mvn clean install
 You'll then use the `mvn archetype:generate` command from above, except for the
 `-DarchetypeVersion` argument which you'll replace with `HEAD-SNAPSHOT`.
 
-## Compatibility
+## Compatibility
+
 
 To use variable interpolation in parameters during `mvn archetype:generate`,
 you need at least version 2.2 of the maven-archetype-plugin. Archetypes use
