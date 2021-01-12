@@ -4,9 +4,10 @@ This project contains a Maven archetype for modular GWT projects using Spring Bo
 
 If you are looking for the original archetype creator or would prefer another backend/implementation, please visit:  [gwt-maven-archetypes](https://github.com/tbroyer/gwt-maven-archetypes).
 
-## How to use
 
-TODO, TODO
+## How to use
+
+fubar
 
 ```
 git clone https://github.com/edigonzales/gwt-maven-sogis-archetype.git
