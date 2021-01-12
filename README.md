@@ -1,0 +1,1 @@
+# gwt-maven-sogis-archetype
