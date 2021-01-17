@@ -8,8 +8,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 @ServletComponentScan
-public class Application
-    extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer {
   
   public static void main(String[] args) {
     SpringApplication.run(Application.class,
@@ -20,5 +19,4 @@ public class Application
   protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
     return builder.sources(Application.class);
   }
-  
 }

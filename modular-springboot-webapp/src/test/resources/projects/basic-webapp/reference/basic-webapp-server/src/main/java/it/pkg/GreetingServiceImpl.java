@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
  * The server side implementation of the RPC service.
  */
 @SuppressWarnings("serial")
-@WebServlet("/basic/greet")
+@WebServlet("/app/greet")
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 	
 	public GreetingResponse greetServer(String input) throws IllegalArgumentException {

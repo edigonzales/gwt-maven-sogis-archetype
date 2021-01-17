@@ -39,8 +39,8 @@
         <groupId>net.ltgt.gwt.maven</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
         <configuration>
-          <moduleName>it.pkg.Basic</moduleName>
-          <moduleShortName>basic</moduleShortName>
+          <moduleName>it.pkg.App</moduleName>
+          <moduleShortName>app</moduleShortName>
         </configuration>
       </plugin>
     </plugins>
