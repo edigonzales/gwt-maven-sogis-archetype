@@ -6,7 +6,7 @@ RUN jlink --compress=2 --no-header-files --no-man-pages \
 FROM debian:buster-slim as builder
 COPY --from=0 /usr/lib/jvm/spring-boot-runtime /usr/lib/jvm/spring-boot-runtime
 WORKDIR /home/app
-ARG JAR_FILE=standortkarte-server/target/standortkarte-*.jar
+ARG JAR_FILE=${artifactId}/target/${artifactId}.jar
 COPY ${JAR_FILE} /home/app/application.jar
 RUN /usr/lib/jvm/spring-boot-runtime/bin/java -Djarmode=layertools -jar /home/app/application.jar extract
 
