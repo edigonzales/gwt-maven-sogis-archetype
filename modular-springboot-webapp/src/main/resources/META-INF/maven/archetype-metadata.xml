@@ -31,9 +31,9 @@
       <directory/>
       <includes>
         <include>mvnw*</include>
-        <include>**/*.java</include>
-        <include>**/*.jar</include>
-        <include>**/*.properties</include>
+        <include>**/MavenWrapperDownloader.java</include>
+        <include>**/maven-wrapper.jar</include>
+        <include>**/maven-wrapper.properties</include>
       </includes>
     </fileSet>
   </fileSets>
@@ -96,7 +96,12 @@
             <include>**/*.svg</include>
             <include>**/*.properties</include>
             <include>**/*.yml</include>
-            <include>**/*.json</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>access-filter.json</include>
           </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">

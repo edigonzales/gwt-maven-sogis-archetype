@@ -3,7 +3,7 @@ RUN gu install native-image
 RUN native-image --version
 COPY . /home/app
 WORKDIR /home/app
-RUN ./mvnw -q -B -Penv-prod,native clean package && \
+RUN ./mvnw -e -q -B -Penv-prod,native clean package && \
     ls -la /home/app/${artifactId}
 
 FROM debian:buster-slim
