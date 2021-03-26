@@ -23,8 +23,8 @@
     <version>HEAD-SNAPSHOT</version>
   </parent>
 
-  <artifactId>modular-springboot-webapp</artifactId>
-  <version>HEAD-SNAPSHOT</version>
+  <artifactId>gwt-modular-springboot-webapp</artifactId>
+  <version>0.0.1</version>
   <packaging>maven-archetype</packaging>
 
   <name>GWT Modular non-RPC SpringBoot WebApp Archetype</name>
