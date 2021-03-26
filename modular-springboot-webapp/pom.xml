@@ -18,7 +18,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>io.github.sogis</groupId>
+    <groupId>io.github.sogis.archetype</groupId>
     <artifactId>gwt-maven-springboot-archetype</artifactId>
     <version>HEAD-SNAPSHOT</version>
   </parent>
