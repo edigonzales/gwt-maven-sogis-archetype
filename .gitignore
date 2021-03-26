@@ -1,3 +1,5 @@
+.project
+.settings
 .DS_Store
 
 # NOTE: OS- or IDE/editor-specific files (e.g. Windows' Thumbs.db, OSX's .DS_Store, Vim's *.swp,
