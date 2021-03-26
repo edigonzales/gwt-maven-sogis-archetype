@@ -24,7 +24,7 @@
   </parent>
 
   <artifactId>gwt-modular-springboot-webapp</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
   <name>GWT Modular non-RPC SpringBoot WebApp Archetype</name>

@@ -10,7 +10,14 @@ If you are looking for the original archetype creator or would prefer another ba
 ## How to use
 
 ### Generate a project
-Until the archetype is released/published, you have to check it out from the github repository:
+```
+mvn archetype:generate \
+   -DarchetypeGroupId=io.github.sogis.archetype \
+   -DarchetypeVersion=LATEST \
+   -DarchetypeArtifactId=gwt-modular-springboot-webapp
+```
+
+This should use the latest release from the Central Repository. Alternatively, and/or if you want to hack on / contribute to the archetypes, you can clone and install the project locally:
 
 ```
 git clone https://github.com/edigonzales/gwt-maven-sogis-archetype.git
@@ -23,7 +30,7 @@ You'll then use the `mvn archetype:generate` command:
 mvn org.apache.maven.plugins:maven-archetype-plugin:2.2:generate \
    -DarchetypeGroupId=com.github.sogis.archetype \
    -DarchetypeVersion=HEAD-SNAPSHOT \
-   -DarchetypeArtifactId=modular-springboot-webapp
+   -DarchetypeArtifactId=gwt-modular-springboot-webapp
 ```
 
 ### Develop
