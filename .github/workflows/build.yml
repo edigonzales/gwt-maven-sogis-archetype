@@ -6,8 +6,8 @@ on:
     - cron: "0 0 * * MON"
 
 jobs:
-  release:
-    name: Release on Sonatype OSS
+  build:
+    name: Build and release
     runs-on: ubuntu-latest
 
     steps:
@@ -27,17 +27,17 @@ jobs:
 
       - name: Build with Maven
         #run: mvn -B package --file pom.xml
-        run: mvn -B package
+        run: mvn -B package --file pom.xml
 
       - name: Set up Apache Maven Central
         uses: actions/setup-java@v1
         with: # running setup-java again overwrites the settings.xml
           java-version: 11
           server-id: ossrh
-          server-username: OSSRH_USERNAME
-          server-password: OSSRH_PASSWORD
+          server-username: ${{ secrets.OSSRH_USERNAME }}
+          server-password: ${{ secrets.OSSRH_PASSWORD }}
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
-          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+          gpg-passphrase: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
       - name: Publish to Apache Maven Central
         run: mvn -Prelease deploy
