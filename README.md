@@ -69,6 +69,8 @@ docker build -f ${artifactId}-server/src/main/docker/Dockerfile.nativ-build -t s
 To use variable interpolation in parameters during `mvn archetype:generate`, you need at least version 2.2 of the maven-archetype-plugin. Archetypes use `${module.toLowerCase()}` as the default value for the `module-short-name` parameter, so if you don't use version 2.2 or above of the maven-archetype-plugin, make sure you provide a value and do not use the default one for that parameter. You can also make sure you use version 2.2 of the plugin by using `mvn org.apache.maven.plugins:maven-archetype-plugin:2.2:generate` instead of `mvn archetype:generate`. It should be noted that variable interpolation also does not work in M2Eclipse's wizard, despite using recent versions of Maven thus (probably) a recent-enough version of the maven-archetype-plugin.
 
 ## todo
+- Docs:
+  * deploy to maven central (especially gh action settings)
 - GraalVM
   * ....
 - Div-Element (Platzhalter für Suche) in Karte.
