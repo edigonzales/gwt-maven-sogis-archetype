@@ -2,8 +2,10 @@ name: Continuous Integration
 
 on: 
   push:
-  schedule:
-    - cron: "0 0 * * MON"
+    branches:
+      - main
+  #schedule:
+  #  - cron: "0 0 * * MON"
 
 jobs:
   build:
