@@ -11,9 +11,9 @@ If you are looking for the original archetype creator or would prefer another ba
 
 ### Generate a project
 ```
-mvn org.apache.maven.plugins:maven-archetype-plugin:2.2:generate \
+mvn archetype:generate \
    -DarchetypeGroupId=io.github.sogis.archetype \
-   -DarchetypeVersion=LATEST \
+   -DarchetypeVersion=0.0.2-SNAPSHOT \
    -DarchetypeArtifactId=gwt-modular-springboot-webapp
 ```
 
