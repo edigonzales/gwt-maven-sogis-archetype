@@ -28,7 +28,7 @@ spring:
 #         active: test 
 
 # ========================
-# SPRING
+# APPLICATION
 # ========================
 app:
     myVar: ${VAR:defaultValue}
