@@ -17,7 +17,7 @@ mvn archetype:generate \
    -DarchetypeArtifactId=gwt-modular-springboot-webapp
 ```
 
-This should use the latest release from the Central Repository. Alternatively, and/or if you want to hack on / contribute to the archetypes, you can clone and install the project locally:
+This should use the latest release from the Snapshot Repository. Alternatively, and/or if you want to hack on / contribute to the archetypes, you can clone and install the project locally:
 
 ```
 git clone https://github.com/edigonzales/gwt-maven-sogis-archetype.git
@@ -50,16 +50,25 @@ Or without downloading all the snapshots again:
 mvn gwt:codeserver -pl *-client -am -nsu
 ```
 
-## Build
+### Build
 
-### JVM
+#### JVM
 
 ```
-./mvnw clean package
+./mvnw -Penv-prod clean package
 docker build -f ${artifactId}-server/src/main/docker/Dockerfile.jvm -t sogis/${artifactId} .
 ```
 
-### Native Image
+#### Native Image
+```
+./mvnw -Penv-prod,native package
+```
+
+```
+docker build -f ${artifactId}-server/src/main/docker/Dockerfile.nativ -t sogis/${artifactId} .
+```
+
+#### Native Image with Docker
 ```
 docker build -f ${artifactId}-server/src/main/docker/Dockerfile.nativ-build -t sogis/${artifactId} .
 ```

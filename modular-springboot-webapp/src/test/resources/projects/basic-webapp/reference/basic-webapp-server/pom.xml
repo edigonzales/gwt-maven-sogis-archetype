@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <parent>
     <groupId>archetype.it</groupId>
     <artifactId>basic-webapp</artifactId>
     <version>0.1-SNAPSHOT</version>
   </parent>
-
   <artifactId>basic-webapp-server</artifactId>
-
+  <properties>
+    <java.version>11</java.version>
+    <repackage.classifier/>
+    <spring-native.version>0.10.1</spring-native.version>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
@@ -33,55 +35,43 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.experimental</groupId>
-      <artifactId>spring-graalvm-native</artifactId>
-      <version>0.8.5</version>
+      <artifactId>spring-native</artifactId>
+      <version>${spring-native.version}</version>
     </dependency>
   </dependencies>
-
-  <repositories>
-    <repository>
-      <id>spring-milestone</id>
-      <name>Spring milestone</name>
-      <url>https://repo.spring.io/milestone</url>
-    </repository>
-  </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>spring-milestone</id>
-      <name>Spring milestone</name>
-      <url>https://repo.spring.io/milestone</url>
-    </pluginRepository>
-  </pluginRepositories>
-
   <build>
     <finalName>basic-webapp</finalName>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.0</version>
-      </plugin>
-      <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <skip>false</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.experimental</groupId>
+        <artifactId>spring-aot-maven-plugin</artifactId>
+        <version>${spring-native.version}</version>
+        <configuration>
+          <removeSpelSupport>true</removeSpelSupport>
+          <removeYamlSupport>true</removeYamlSupport>
+        </configuration>
         <executions>
           <execution>
+            <id>test-generate</id>
             <goals>
-              <goal>repackage</goal>
+              <goal>test-generate</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>generate</id>
+            <goals>
+              <goal>generate</goal>
             </goals>
           </execution>
         </executions>
-        <configuration>
-          <skip>false</skip>
-          <excludeDevtools>true</excludeDevtools>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -110,7 +100,23 @@
       </plugin>
     </plugins>
   </build>
-
+  <repositories>
+    <repository>
+      <id>spring-release</id>
+      <name>Spring Release</name>
+      <url>https://repo.spring.io/release</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>spring-release</id>
+      <name>Spring Release</name>
+      <url>https://repo.spring.io/release</url>
+    </pluginRepository>
+  </pluginRepositories>
   <profiles>
     <profile>
       <id>only-eclipse</id>
@@ -150,7 +156,6 @@
         </pluginManagement>
       </build>
     </profile>
-
     <profile>
       <!-- XXX: We want to exclude basic-webapp-client from 'env-dev' profile, Maven forces us to make a 'env-prod' profile -->
       <id>env-prod</id>
@@ -159,8 +164,7 @@
       </activation>
       <build>
         <plugins>
-          <!-- Das ist "build smell", weil das Entpacken vor dem Packen kommt. 
-            Eclipse und Maven reklamiert auch. Siehe README.md -->
+          <!-- Das ist "build smell", weil das Entpacken vor dem Packen kommt. Eclipse und Maven reklamiert auch. Siehe README.md -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-dependency-plugin</artifactId>
@@ -193,6 +197,14 @@
     </profile>
     <profile>
       <id>env-dev</id>
+      <dependencies>
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-devtools</artifactId>
+          <scope>runtime</scope>
+          <optional>true</optional>
+        </dependency>
+      </dependencies>
       <activation>
         <property>
           <name>env</name>
@@ -202,60 +214,63 @@
     </profile>
     <profile>
       <id>native</id>
+      <properties>
+        <repackage.classifier>exec</repackage.classifier>
+        <native-buildtools.version>0.9.1</native-buildtools.version>
+      </properties>
+      <dependencies>
+        <dependency>
+          <groupId>org.graalvm.buildtools</groupId>
+          <artifactId>junit-platform-native</artifactId>
+          <version>${native-buildtools.version}</version>
+          <scope>test</scope>
+        </dependency>
+      </dependencies>
       <build>
         <plugins>
           <plugin>
-            <artifactId>maven-antrun-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>make-native-image-config-folder</id>
-                <phase>test-compile</phase>
-                <configuration>
-                  <tasks>
-                    <mkdir
-                      dir="${project.basedir}/target/classes/META-INF/native-image/" />
-                  </tasks>
-                </configuration>
-                <goals>
-                  <goal>run</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.22.0</version>
             <configuration>
-              <argLine>-Dorg.graalvm.nativeimage.imagecode=agent
-                -Dspring.xml.ignore=true -Dspring.spel.ignore=true
-                -agentlib:native-image-agent=access-filter-file=target/classes/access-filter.json,config-merge-dir=target/classes/META-INF/native-image</argLine>
-              <!-- <includes> <include>**/ApplicationTests.java</include> </includes> -->
+              <argLine>-DspringAot=true -agentlib:native-image-agent=access-filter-file=src/test/resources/access-filter.json,config-merge-dir=target/classes/META-INF/native-image</argLine>
             </configuration>
           </plugin>
           <plugin>
-            <!-- https://www.graalvm.org/reference-manual/native-image/NativeImageMavenPlugin/ 
-              https://repo.spring.io/milestone/org/springframework/experimental/spring-graalvm-native-docs/0.8.5/spring-graalvm-native-docs-0.8.5.zip!/reference/index.html#options -->
-            <groupId>org.graalvm.nativeimage</groupId>
-            <artifactId>native-image-maven-plugin</artifactId>
-            <version>20.3.0</version>
-            <configuration>
-              <mainClass>it.pkg.Application</mainClass>
-              <buildArgs>-Dspring.native.remove-yaml-support=false
-                -Dspring.spel.ignore=true</buildArgs>
-            </configuration>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <version>${native-buildtools.version}</version>
             <executions>
               <execution>
+                <id>test-native</id>
                 <goals>
-                  <goal>native-image</goal>
+                  <goal>test</goal>
+                </goals>
+                <phase>test</phase>
+              </execution>
+              <execution>
+                <id>build-native</id>
+                <goals>
+                  <goal>build</goal>
                 </goals>
                 <phase>package</phase>
               </execution>
             </executions>
+            <configuration>
+              <buildArgs>
+                <buildArg>--enable-url-protocols=http</buildArg>
+                <buildArg>--no-fallback</buildArg>
+                <buildArg>-Dspring.native.remove-yaml-support=false</buildArg>
+                <buildArg>-Dspring.spel.ignore=true</buildArg>
+              </buildArgs>
+            </configuration>
           </plugin>
+          <!-- Avoid a clash between Spring Boot repackaging and native-maven-plugin -->
           <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+              <classifier>exec</classifier>
+            </configuration>
           </plugin>
         </plugins>
       </build>
