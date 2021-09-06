@@ -82,7 +82,6 @@ To use variable interpolation in parameters during `mvn archetype:generate`, you
   * deploy to maven central (especially gh action settings)
 - GraalVM
   * Properties-Binding funktioniert irgendwie mit YAML nicht.
-- `server/src/main/webapp` kann nicht (?) gelöscht werden, dass es beim Builden automatisch leer erzeugt wird und dann in der Referenz fehlen würde.
 - Div-Element (Platzhalter für Suche) in Karte.
 - maven-surefire-plugin: Braucht es das noch, falls es von Beginn weg einen Test gibt?
 - ---
