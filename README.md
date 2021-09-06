@@ -13,11 +13,11 @@ If you are looking for the original archetype creator or would prefer another ba
 ```
 mvn archetype:generate \
    -DarchetypeGroupId=io.github.sogis.archetype \
-   -DarchetypeVersion=0.0.2-SNAPSHOT \
+   -DarchetypeVersion=0.0.1 \
    -DarchetypeArtifactId=gwt-modular-springboot-webapp
 ```
 
-This should use the latest release from the Snapshot Repository. Alternatively, and/or if you want to hack on / contribute to the archetypes, you can clone and install the project locally:
+This should use the latest release from the Sonatype Maven Repository. Alternatively, and/or if you want to hack on / contribute to the archetypes, you can clone and install the project locally:
 
 ```
 git clone https://github.com/edigonzales/gwt-maven-sogis-archetype.git
@@ -29,7 +29,7 @@ You'll then use the `mvn archetype:generate` command:
 ```
 mvn org.apache.maven.plugins:maven-archetype-plugin:2.2:generate \
    -DarchetypeGroupId=io.github.sogis.archetype \
-   -DarchetypeVersion=HEAD-SNAPSHOT \
+   -DarchetypeVersion=0.0.<X>-SNAPSHOT \
    -DarchetypeArtifactId=gwt-modular-springboot-webapp
 ```
 
@@ -81,9 +81,10 @@ To use variable interpolation in parameters during `mvn archetype:generate`, you
 - Docs:
   * deploy to maven central (especially gh action settings)
 - GraalVM
-  * ....
+  * Properties-Binding funktioniert irgendwie mit YAML nicht.
+- `server/src/main/webapp` kann nicht (?) gelöscht werden, dass es beim Builden automatisch leer erzeugt wird und dann in der Referenz fehlen würde.
 - Div-Element (Platzhalter für Suche) in Karte.
 - maven-surefire-plugin: Braucht es das noch, falls es von Beginn weg einen Test gibt?
-- ...
+- ---
 - ...
 - ...
