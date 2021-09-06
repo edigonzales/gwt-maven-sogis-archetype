@@ -108,6 +108,7 @@
           <directory>src/main/resources</directory>
           <includes>
             <include>access-filter.json</include>
+            <include>**/resource-config.json</include>
           </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
