@@ -33,6 +33,14 @@ mvn org.apache.maven.plugins:maven-archetype-plugin:2.2:generate \
    -DarchetypeArtifactId=gwt-modular-springboot-webapp
 ```
 
+```
+mvn archetype:generate \
+-DarchetypeCatalog=local \
+-DarchetypeGroupId=io.github.sogis.archetype \
+-DarchetypeVersion=0.0.2-SNAPSHOT \
+-DarchetypeArtifactId=gwt-modular-springboot-webapp
+```
+
 ### Develop
 First terminal:
 ```
