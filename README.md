@@ -1,6 +1,6 @@
 # gwt-maven-sogis-archetype
 
-**ACHTUNG:** `spring-graalvm-native` killt livereload.
+***ACHTUNG:*** `spring-graalvm-native` killt livereload.
 
 This project contains a Maven archetype for modular GWT projects using Spring Boot. The repo is based on the implementation of NanuKit's [gwt-maven-springboot-archetype](https://github.com/NaluKit/gwt-maven-springboot-archetype) and Thomas Broyer's [gwt-maven-archetypes](https://github.com/tbroyer/gwt-maven-archetypes).
 
