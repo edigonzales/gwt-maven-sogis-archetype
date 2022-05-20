@@ -1,11 +1,8 @@
 # gwt-maven-sogis-archetype
 
-***ACHTUNG:*** `spring-graalvm-native` killt livereload.
-
 This project contains a Maven archetype for modular GWT projects using Spring Boot. The repo is based on the implementation of NanuKit's [gwt-maven-springboot-archetype](https://github.com/NaluKit/gwt-maven-springboot-archetype) and Thomas Broyer's [gwt-maven-archetypes](https://github.com/tbroyer/gwt-maven-archetypes).
 
 If you are looking for the original archetype creator or would prefer another backend/implementation, please visit:  [gwt-maven-archetypes](https://github.com/tbroyer/gwt-maven-archetypes).
-
 
 ## How to use
 
@@ -37,7 +34,7 @@ mvn org.apache.maven.plugins:maven-archetype-plugin:2.2:generate \
 mvn archetype:generate \
 -DarchetypeCatalog=local \
 -DarchetypeGroupId=io.github.sogis.archetype \
--DarchetypeVersion=0.0.2-SNAPSHOT \
+-DarchetypeVersion=0.0.3-SNAPSHOT \
 -DarchetypeArtifactId=gwt-modular-springboot-webapp
 ```
 
@@ -69,7 +66,8 @@ docker build -f ${artifactId}-server/src/main/docker/Dockerfile.jvm -t sogis/${a
 
 #### Native Image
 ```
-./mvnw -Penv-prod,native package
+./mvnw clean test
+./mvnw -DskipTests -Penv-prod,native package
 ```
 
 ```

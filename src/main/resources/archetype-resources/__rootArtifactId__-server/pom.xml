@@ -71,7 +71,7 @@
   </dependencies>
 
   <build>
-    <finalName>sodata</finalName>
+    <finalName>${rootArtifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -227,7 +227,7 @@
 
 
     <profile>
-      <!-- XXX: We want to exclude sodata-client from 'env-dev' profile, Maven forces us to make a 'env-prod' profile -->
+      <!-- XXX: We want to exclude ${rootArtifactId}-client from 'env-dev' profile, Maven forces us to make a 'env-prod' profile -->
       <id>env-prod</id>
       <activation>
       </activation>
@@ -250,7 +250,7 @@
                   <artifactItems>
                     <artifactItem>
                       <groupId>${project.groupId}</groupId>
-                      <artifactId>sodata-client</artifactId>
+                      <artifactId>${rootArtifactId}-client</artifactId>
                       <version>${project.version}</version>
                       <type>war</type>
                       <overWrite>true</overWrite>
