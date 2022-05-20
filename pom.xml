@@ -1,36 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-   Copyright 2012 Thomas Broyer
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
--->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.github.sogis.archetype</groupId>
-  <artifactId>gwt-maven-springboot-archetype</artifactId>
-  <version>HEAD-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <artifactId>gwt-modular-springboot-webapp</artifactId>
+  <version>0.0.3-SNAPSHOT</version>
+  <packaging>maven-archetype</packaging>
+
+  <properties>
+    <archetype.test.skip>false</archetype.test.skip>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <name>gwt-modular-springboot-webapp</name>
+
+  <description>Parent pom providing dependency and plugin management for applications built with Maven</description>
 
   <url>https://github.com/edigonzales/gwt-maven-sogis-archetype</url>
-
-  <inceptionYear>2021</inceptionYear>
-  <licenses>
-    <license>
-      <name>Apache 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-    </license>
-  </licenses>
 
   <developers>
     <developer>
@@ -57,9 +43,12 @@
     </contributor>
   </contributors>
 
-  <modules>
-    <module>modular-springboot-webapp</module>
-  </modules>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
 
   <scm>
     <connection>scm:git:git://github.com/edigonzales/gwt-maven-sogis-archetype.git</connection>
@@ -70,10 +59,6 @@
     <system>GitHub</system>
     <url>https://github.com/edigonzales/gwt-maven-sogis-archetype/issues</url>
   </issueManagement>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
 
   <distributionManagement>
     <snapshotRepository>
@@ -117,7 +102,7 @@
       <extension>
         <groupId>org.apache.maven.archetype</groupId>
         <artifactId>archetype-packaging</artifactId>
-        <version>3.1.0</version>
+        <version>3.2.0</version>
       </extension>
     </extensions>
 
@@ -150,7 +135,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-archetype-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.2.0</version>
           <configuration>
             <ignoreEOLStyle>true</ignoreEOLStyle>
           </configuration>
@@ -215,4 +200,5 @@
       </build>
     </profile>
   </profiles>
+
 </project>
