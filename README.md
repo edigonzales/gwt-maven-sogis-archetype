@@ -58,7 +58,7 @@ mvn gwt:codeserver -pl *-client -am -nsu
 ### Build
 
 #### JVM
-
+FIXME
 ```
 ./mvnw -Penv-prod clean package
 docker build -f ${artifactId}-server/src/main/docker/Dockerfile.jvm -t sogis/${artifactId} .
@@ -70,11 +70,13 @@ docker build -f ${artifactId}-server/src/main/docker/Dockerfile.jvm -t sogis/${a
 ./mvnw -DskipTests -Penv-prod,native package
 ```
 
+FIXME
 ```
 docker build -f ${artifactId}-server/src/main/docker/Dockerfile.nativ -t sogis/${artifactId} .
 ```
 
 #### Native Image with Docker
+FIXME
 ```
 docker build -f ${artifactId}-server/src/main/docker/Dockerfile.nativ-build -t sogis/${artifactId} .
 ```
