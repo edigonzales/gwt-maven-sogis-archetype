@@ -3,4 +3,4 @@
 #set( $symbol_escape = '\' )
 package ${package};
 
-class Empty {}
+interface Empty {}

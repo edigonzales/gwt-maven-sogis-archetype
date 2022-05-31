@@ -1,3 +1,3 @@
 package it.pkg;
 
-class Empty {}
+interface Empty {}
